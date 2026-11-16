@@ -25,6 +25,41 @@
   color-scheme:dark;
 }}
 *{box-sizing:border-box}
+/* tool chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
+.chips span{font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:4px 11px}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px;counter-reset:st}
+.step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px}
+.step::before{counter-increment:st;content:counter(st,decimal-leading-zero);font-family:'Space Grotesk',Arial,sans-serif;font-size:28px;font-weight:700;color:var(--accent);opacity:.9;display:block;margin-bottom:4px}
+.step h3{font-size:16px;margin-bottom:6px}.step p{margin:0;color:var(--muted);font-size:14.5px}
+/* demo dashboard */
+.demo{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:18px}
+.demo-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.demo-top small{color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{font:inherit;font-size:14px;font-weight:600;border:0;background:transparent;color:var(--muted);padding:7px 13px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--btn-fg)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:12px}
+@media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}.kpi b{font-size:20px}}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi span{display:block;font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.kpi b{font-family:'Space Grotesk',Arial,sans-serif;font-size:24px;font-variant-numeric:tabular-nums}
+.kpi i{font-style:normal;font-size:13px;font-weight:600;margin-left:6px}
+.up{color:#1F9D61}.down{color:#C9473F}
+.chart{overflow-x:auto}.chart svg{display:block;min-width:560px;width:100%;height:auto}
+.chart .b{fill:var(--accent);transition:height .5s,y .5s}.chart .b.neg{fill:#C9473F}
+.chart text{fill:var(--muted);font-size:11px;font-family:'IBM Plex Sans',Arial,sans-serif}
+.chart .g{stroke:var(--line)}
+.insight{margin:0;padding:12px 14px;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 9%,transparent);border-radius:0 8px 8px 0;font-size:15px}
+/* code tabs */
+.code{background:#0F2233;border-radius:14px;overflow:hidden;border:1px solid #1D3A52}
+.code .tabs{display:flex;gap:2px;background:#0B1A27;padding:6px 6px 0}
+.code .tabs button{font:inherit;font-size:13.5px;font-weight:600;border:0;background:transparent;color:#8FA8BD;padding:8px 14px;border-radius:8px 8px 0 0;cursor:pointer}
+.code .tabs button[aria-selected="true"]{background:#0F2233;color:#F4F2EC}
+.code pre{margin:0;padding:18px 20px;overflow-x:auto;color:#D8E3EC;font:13.5px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.code .k{color:#7FD1C4}.code .s{color:#E8B84A}.code .c{color:#6F8BA3}
+
 .wa-float{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9;display:flex;align-items:center;gap:8px;background:#1FA855;color:#fff;text-decoration:none;font-weight:600;font-size:15px;padding:11px 16px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.18);transition:transform .2s}
 .wa-float:hover{transform:translateY(-2px)}
 @media (max-width:560px){.wa-float span{display:none}.wa-float{padding:12px}}
@@ -220,7 +255,7 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
 <nav id="nav"><div class="wrap">
   <b>Waqar Azeem</b>
   <div class="links">
-    <a href="#projects">Projects</a><a href="#help">What I bring</a><a href="#web">Web work</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+    <a href="#projects">Projects</a><a href="#demo">Live demo</a><a href="#help">What I bring</a><a href="#web">Web work</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
     <a class="cta btn sm" href="#contact">Contact</a>
   </div>
 </div></nav>
@@ -230,6 +265,7 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
     <p class="eyebrow"><i class="dot" aria-hidden="true"></i> Data Analyst · Riyadh · Available now</p>
     <h1>I turn financial and business data into <span class="rot" id="rot"><span class="grad on">dashboards</span><span class="grad" aria-hidden="true">reports</span><span class="grad" aria-hidden="true">insights</span><span class="grad" aria-hidden="true">decisions</span></span> people use.</h1>
     <p class="lead">IBM Certified Data Analyst with 7+ years of technical experience. Currently building dashboards and financial reporting for finance and accounting clients at Insights KSA, Riyadh.</p>
+    <div class="chips" aria-label="Core tools"><span>Power BI</span><span>SQL</span><span>Python</span><span>Excel</span><span>DAX</span><span>KSA VAT</span><span>WordPress</span></div>
     <div class="actions">
       <a class="btn" href="#projects">See my projects</a>
       <a class="btn ghost" href="Waqar-Azeem-CV-Data-Analyst.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
@@ -394,6 +430,81 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
   </div>
 </div></section>
 
+<section id="demo"><div class="wrap">
+  <p class="eyebrow">Try it</p>
+  <h2>A live sample dashboard</h2>
+  <div class="demo reveal">
+    <div class="demo-top">
+      <div class="seg" role="group" aria-label="Measure">
+        <button type="button" data-m="rev" aria-pressed="true">Revenue</button><button type="button" data-m="exp" aria-pressed="false">Expenses</button><button type="button" data-m="np" aria-pressed="false">Net profit</button>
+      </div>
+      <small>Sample data for a fictional Riyadh trading company, FY2025 (SAR thousands)</small>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><span id="k1l">Total</span><b id="k1">–</b></div>
+      <div class="kpi"><span>Monthly average</span><b id="k2">–</b></div>
+      <div class="kpi"><span>Best month</span><b id="k3">–</b></div>
+      <div class="kpi"><span>H2 vs H1</span><b id="k4">–</b></div>
+    </div>
+    <div class="chart" id="chart" role="img" aria-label="Monthly bar chart"></div>
+    <p class="insight" id="ins"></p>
+  </div>
+</div></section>
+
+<section id="process"><div class="wrap">
+  <p class="eyebrow">How I work</p>
+  <h2>From raw data to a decision</h2>
+  <div class="steps">
+    <div class="step reveal"><h3>Understand</h3><p>Agree the business question, the KPIs and who will read the report.</p></div>
+    <div class="step reveal d1"><h3>Collect &amp; clean</h3><p>Pull data with SQL or Excel, fix gaps and duplicates, reconcile totals.</p></div>
+    <div class="step reveal d2"><h3>Model</h3><p>Build the data model and measures in Power BI (DAX) or Python.</p></div>
+    <div class="step reveal d3"><h3>Visualise</h3><p>Clear dashboards with the 3–5 numbers that matter on the first screen.</p></div>
+    <div class="step reveal"><h3>Automate</h3><p>Scheduled refresh and tools so the report runs every month without manual work.</p></div>
+  </div>
+</div></section>
+
+<section id="code"><div class="wrap">
+  <p class="eyebrow">Under the hood</p>
+  <h2>A taste of my code</h2>
+  <div class="code reveal">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-t="sql">SQL</button><button type="button" role="tab" aria-selected="false" data-t="py">Python</button><button type="button" role="tab" aria-selected="false" data-t="dax">DAX</button>
+    </div>
+<pre data-p="sql"><span class="c">-- Monthly revenue, VAT and growth by branch</span>
+<span class="k">SELECT</span> branch,
+       DATE_TRUNC(<span class="s">'month'</span>, invoice_date)            <span class="k">AS</span> month,
+       SUM(net_amount)                               <span class="k">AS</span> revenue,
+       SUM(net_amount) * <span class="s">0.15</span>                        <span class="k">AS</span> vat_due,
+       SUM(net_amount) / LAG(SUM(net_amount))
+         <span class="k">OVER</span> (<span class="k">PARTITION BY</span> branch <span class="k">ORDER BY</span> DATE_TRUNC(<span class="s">'month'</span>, invoice_date)) - <span class="s">1</span> <span class="k">AS</span> mom_growth
+<span class="k">FROM</span>   sales_invoices
+<span class="k">WHERE</span>  status = <span class="s">'posted'</span>
+<span class="k">GROUP BY</span> branch, month
+<span class="k">ORDER BY</span> branch, month;</pre>
+<pre data-p="py" hidden><span class="c"># Clean a ledger export and flag unusual expenses</span>
+<span class="k">import</span> pandas <span class="k">as</span> pd
+
+df = pd.read_excel(<span class="s">"ledger_2025.xlsx"</span>, parse_dates=[<span class="s">"date"</span>])
+df = df.dropna(subset=[<span class="s">"amount"</span>]).drop_duplicates(<span class="s">"voucher_no"</span>)
+df[<span class="s">"month"</span>] = df[<span class="s">"date"</span>].dt.to_period(<span class="s">"M"</span>)
+
+monthly = df.pivot_table(index=<span class="s">"month"</span>, columns=<span class="s">"account"</span>,
+                         values=<span class="s">"amount"</span>, aggfunc=<span class="s">"sum"</span>).fillna(<span class="s">0</span>)
+z = (monthly - monthly.mean()) / monthly.std()
+alerts = z[z.abs() &gt; <span class="s">2</span>].stack()        <span class="c"># months more than 2σ from normal</span>
+print(alerts.sort_values(ascending=<span class="k">False</span>).head(<span class="s">10</span>))</pre>
+<pre data-p="dax" hidden><span class="c">-- Power BI measures for a finance dashboard</span>
+Revenue = <span class="k">SUM</span> ( Sales[NetAmount] )
+
+Revenue LY = <span class="k">CALCULATE</span> ( [Revenue], <span class="k">SAMEPERIODLASTYEAR</span> ( 'Date'[Date] ) )
+
+Revenue YoY % = <span class="k">DIVIDE</span> ( [Revenue] - [Revenue LY], [Revenue LY] )
+
+Gross Margin % =
+<span class="k">DIVIDE</span> ( [Revenue] - <span class="k">SUM</span> ( Sales[Cost] ), [Revenue] )</pre>
+  </div>
+</div></section>
+
 <section id="skills"><div class="wrap">
   <p class="eyebrow">What I work with</p>
   <h2>Skills</h2>
@@ -471,6 +582,28 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
     document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed',x===b));
     document.querySelectorAll('.site').forEach(c=>{c.hidden=!(b.dataset.f==='all'||c.dataset.region===b.dataset.f);if(!c.hidden)c.classList.add('in')});
   }));
+  // sample dashboard
+  (()=>{const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const rev=[820,760,910,880,1020,970,860,900,1080,1150,1210,1390],exp=[690,700,720,760,780,800,770,760,810,840,880,930];
+    const data={rev,exp,np:rev.map((v,i)=>v-exp[i])},lab={rev:'Total revenue',exp:'Total expenses',np:'Total net profit'};
+    const el=document.getElementById('chart');if(!el)return;const f=n=>n.toLocaleString('en-US');
+    function draw(m){const d=data[m],W=760,H=260,P=34,max=Math.ceil(Math.max(...d)*1.08/200)*200,bw=(W-P*2)/12*.62;
+      let g='';for(let k=0;k<=4;k++){const y=H-24-(H-44)*k/4;g+=`<line class="g" x1="${P}" x2="${W-8}" y1="${y}" y2="${y}"/><text x="${P-6}" y="${y+4}" text-anchor="end">${Math.round(max*k/4)}</text>`}
+      const bars=d.map((v,i)=>{const h=(H-44)*v/max,x=P+(W-P*2)/12*i+((W-P*2)/12-bw)/2,y=H-24-h;return `<rect class="b" x="${x}" y="${y}" width="${bw}" height="${h}" rx="3"><title>${M[i]}: ${f(v)}</title></rect><text x="${x+bw/2}" y="${H-8}" text-anchor="middle">${M[i]}</text>`}).join('');
+      el.innerHTML=`<svg viewBox="0 0 ${W} ${H}">${g}${bars}</svg>`;
+      const tot=d.reduce((a,b)=>a+b,0),best=d.indexOf(Math.max(...d)),h1=d.slice(0,6).reduce((a,b)=>a+b,0),h2=d.slice(6).reduce((a,b)=>a+b,0),ch=(h2/h1-1)*100;
+      document.getElementById('k1l').textContent=lab[m];document.getElementById('k1').textContent=f(tot)+'k';
+      document.getElementById('k2').textContent=f(Math.round(tot/12))+'k';document.getElementById('k3').textContent=M[best];
+      const k4=document.getElementById('k4');const good=m==='exp'?ch<0:ch>0;k4.innerHTML=`${ch>0?'+':''}${ch.toFixed(1)}%<i class="${good?'up':'down'}">${good?'▲':'▼'}</i>`;
+      const ins={rev:`Revenue grew ${ch.toFixed(0)}% in the second half, led by a strong Q4 (December was the best month at SAR ${f(d[11])}k).`,
+        exp:`Expenses rose more slowly than revenue (${ch.toFixed(0)}% H2 vs H1), so margins widened through the year.`,
+        np:`Net profit rose from ${f(d[0])}k in January to ${f(d[11])}k in December; February and July were the weak months to look into.`};
+      document.getElementById('ins').textContent=ins[m]}
+    document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));draw(b.dataset.m)}));draw('rev')})();
+  // code tabs
+  document.querySelectorAll('.code .tabs button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.code .tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));
+    document.querySelectorAll('.code pre').forEach(p=>p.hidden=p.dataset.p!==b.dataset.t)}));
 })();
 </script>
 </body>
