@@ -25,6 +25,15 @@
   color-scheme:dark;
 }}
 *{box-sizing:border-box}
+
+/* tools marquee (right to left) */
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:var(--panel);padding-block:14px;margin:8px 0 32px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mq-track{display:flex;width:max-content;animation:mq 38s linear infinite}
+.marquee:hover .mq-track{animation-play-state:paused}
+.mq-set{display:flex;gap:12px;padding-right:12px}
+.mq-set span{white-space:nowrap;font-size:14.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:7px 16px}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;flex-wrap:wrap}.mq-set[aria-hidden]{display:none}.mq-set{flex-wrap:wrap;justify-content:center;padding:0 16px}}
 /* tool chips */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
 .chips span{font-size:13px;font-weight:600;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:4px 11px}
@@ -265,7 +274,6 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
     <p class="eyebrow"><i class="dot" aria-hidden="true"></i> Data Analyst · Riyadh · Available now</p>
     <h1>I turn financial and business data into <span class="rot" id="rot"><span class="grad on">dashboards</span><span class="grad" aria-hidden="true">reports</span><span class="grad" aria-hidden="true">insights</span><span class="grad" aria-hidden="true">decisions</span></span> people use.</h1>
     <p class="lead">IBM Certified Data Analyst with 7+ years of technical experience. Currently building dashboards and financial reporting for finance and accounting clients at Insights KSA, Riyadh.</p>
-    <div class="chips" aria-label="Core tools"><span>Power BI</span><span>SQL</span><span>Python</span><span>Excel</span><span>DAX</span><span>KSA VAT</span><span>WordPress</span></div>
     <div class="actions">
       <a class="btn" href="#projects">See my projects</a>
       <a class="btn ghost" href="Waqar-Azeem-CV-Data-Analyst.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
@@ -278,6 +286,13 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
     <div><span>WhatsApp</span><strong><a href="https://wa.me/966558720153">+966 55 872 0153</a></strong></div>
   </aside>
 </header>
+
+<div class="marquee" aria-label="Languages and tools I use">
+  <div class="mq-track">
+    <div class="mq-set"><span>Power BI</span><span>SQL</span><span>Python</span><span>Excel</span><span>DAX</span><span>Power Query</span><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>MySQL</span><span>KSA VAT reporting</span><span>IRR / NPV</span><span>JavaScript</span><span>HTML & CSS</span><span>PHP</span><span>WordPress</span><span>WooCommerce</span><span>Shopify</span><span>Elementor</span><span>Git & GitHub</span></div>
+    <div class="mq-set" aria-hidden="true"><span>Power BI</span><span>SQL</span><span>Python</span><span>Excel</span><span>DAX</span><span>Power Query</span><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>MySQL</span><span>KSA VAT reporting</span><span>IRR / NPV</span><span>JavaScript</span><span>HTML & CSS</span><span>PHP</span><span>WordPress</span><span>WooCommerce</span><span>Shopify</span><span>Elementor</span><span>Git & GitHub</span></div>
+  </div>
+</div>
 
 <div class="wrap stats">
   <div class="stat reveal"><b data-count="50" data-suffix="+">50+</b><span>dashboards built for clients</span></div>
