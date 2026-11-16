@@ -27,7 +27,7 @@
 *{box-sizing:border-box}
 
 /* tools marquee (right to left) */
-.marquee{overflow:hidden;border-block:1px solid var(--line);background:var(--panel);padding-block:14px;margin:8px 0 32px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee{overflow:hidden;border-block:1px solid var(--line);background:var(--panel);padding-block:14px;margin:0 0 8px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .mq-track{display:flex;width:max-content;animation:mq 38s linear infinite}
 .marquee:hover .mq-track{animation-play-state:paused}
 .mq-set{display:flex;gap:12px;padding-right:12px}
@@ -106,10 +106,13 @@ nav .links a.cta,nav .links a.cta:hover{color:var(--btn-fg)}
 @media(max-width:820px){.hero{grid-template-columns:1fr;padding-block:48px 40px}}
 
 /* numbers */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:8px 56px}
-.stat{border-top:3px solid var(--accent);padding-top:12px}
-.stat b{display:block;font-family:'Space Grotesk',Arial,sans-serif;font-size:36px;line-height:1.1}
-.stat span{color:var(--muted);font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:4px 36px}
+.stat{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px;display:grid;grid-template-columns:auto 1fr;column-gap:14px;align-items:center;box-shadow:0 10px 30px -22px rgba(20,38,58,.45);transition:transform .25s,box-shadow .25s}
+.stat:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(20,38,58,.5)}
+.stat .si{grid-row:span 2;font-style:normal;font-size:22px;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft)}
+.stat b{display:block;font-family:'Space Grotesk',Arial,sans-serif;font-size:32px;line-height:1.05;background:linear-gradient(90deg,var(--accent),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted);font-size:13.5px;line-height:1.35}
+@media(max-width:560px){.stat{grid-template-columns:1fr;row-gap:8px;padding:14px}.stat .si{grid-row:auto;width:38px;height:38px;font-size:18px}.stat b{font-size:26px}}
 @media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
 
 section{padding-block:56px}
@@ -287,18 +290,18 @@ function webImg(i){if(i.dataset.live&&!i.dataset.tried){i.dataset.tried=1;i.src=
   </aside>
 </header>
 
+<div class="wrap stats">
+  <div class="stat reveal"><i class="si" aria-hidden="true">📊</i><b data-count="50" data-suffix="+">50+</b><span>dashboards built for clients</span></div>
+  <div class="stat reveal d1"><i class="si" aria-hidden="true">⚡</i><b data-count="60" data-suffix="%">60%</b><span>less manual calculation time</span></div>
+  <div class="stat reveal d2"><i class="si" aria-hidden="true">💼</i><b data-count="7" data-suffix="+">7+</b><span>years of technical experience</span></div>
+  <div class="stat reveal d3"><i class="si" aria-hidden="true">🇸🇦</i><b data-count="3" data-suffix=" yrs">3 yrs</b><span>working with KSA financial data</span></div>
+</div>
+
 <div class="marquee" aria-label="Languages and tools I use">
   <div class="mq-track">
     <div class="mq-set"><span>Power BI</span><span>SQL</span><span>Python</span><span>Excel</span><span>DAX</span><span>Power Query</span><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>MySQL</span><span>KSA VAT reporting</span><span>IRR / NPV</span><span>JavaScript</span><span>HTML & CSS</span><span>PHP</span><span>WordPress</span><span>WooCommerce</span><span>Shopify</span><span>Elementor</span><span>Git & GitHub</span></div>
     <div class="mq-set" aria-hidden="true"><span>Power BI</span><span>SQL</span><span>Python</span><span>Excel</span><span>DAX</span><span>Power Query</span><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>MySQL</span><span>KSA VAT reporting</span><span>IRR / NPV</span><span>JavaScript</span><span>HTML & CSS</span><span>PHP</span><span>WordPress</span><span>WooCommerce</span><span>Shopify</span><span>Elementor</span><span>Git & GitHub</span></div>
   </div>
-</div>
-
-<div class="wrap stats">
-  <div class="stat reveal"><b data-count="50" data-suffix="+">50+</b><span>dashboards built for clients</span></div>
-  <div class="stat reveal d1"><b data-count="60" data-suffix="%">60%</b><span>less manual calculation time</span></div>
-  <div class="stat reveal d2"><b data-count="7" data-suffix="+">7+</b><span>years of technical experience</span></div>
-  <div class="stat reveal d3"><b data-count="3" data-suffix=" yrs">3 yrs</b><span>working with KSA financial data</span></div>
 </div>
 
 <section id="projects"><div class="wrap">
